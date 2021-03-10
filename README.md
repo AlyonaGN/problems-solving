@@ -1,2 +1,2 @@
 # problems-solving
-In this repository I resolve different JS problems to train my skills.
+In this repository I work on different JS problems to train my skills.
