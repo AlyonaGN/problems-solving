@@ -4,6 +4,13 @@ Return your answer as a number.
  */
 const sumMix = x => x.reduce((acc, cur) => acc + +cur, 0);
 
+/* Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString».
+То есть дефисы удаляются, а все слова после них получают заглавную букву.*/
+
+const camelize = (stringToCamel) => {
+  const arrayOfWords = stringToCamel.split('-');
+  return arrayOfWords.reduce((acc, curr, index) => index === 0 ? curr : acc + curr.charAt(0).toUpperCase() + curr.slice(1), arrayOfWords[0]);
+}
 
 /* The function parts_sums (or its variants in other languages) will take as parameter a list ls and return a list of the sums of its parts as defined above.
 Other Examples:
@@ -34,6 +41,7 @@ Your function should return the int 5.
 If no number was deleted from the array and no difference with it, 
 your function should return the int 0.
 Note: N may be 1 or less (in the latter case, the first array will be []). */
+
 function findDeletedNumber(arr, mixArr) {
     if (arr.length === mixArr.length) return 0;
     let arrSum = arr.reduce((acc, cur) => acc + cur, 0);
@@ -51,6 +59,7 @@ Notes
 The input numbers are big.
 The input is a string of only digits
 The numbers are positives */
+
 function add(a, b) {
   a = a.split("").reverse();
   b = b.split("").reverse();
@@ -76,3 +85,8 @@ function add(a, b) {
   }
   return result.reverse().join("");
 }
+
+/*Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет в нём элементы между a и b и отдаёт массив этих элементов.
+Функция должна возвращать новый массив и не изменять исходный.*/
+
+const filterRange = (arr, start, end) => arr.filter(item => (start <= item && item <= end));
