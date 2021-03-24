@@ -86,7 +86,36 @@ function add(a, b) {
   return result.reverse().join("");
 }
 
-/*Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет в нём элементы между a и b и отдаёт массив этих элементов.
+/*Напишите функцию filterRange(arr, a, b), которая принимает массив arr, 
+ищет в нём элементы между a и b и отдаёт массив этих элементов.
 Функция должна возвращать новый массив и не изменять исходный.*/
 
 const filterRange = (arr, start, end) => arr.filter(item => (start <= item && item <= end));
+
+/* У нас есть массив строк arr. Нужно получить отсортированную копию, но оставить arr неизменённым.
+Создайте функцию copySorted(arr), которая будет возвращать такую копию.*/
+
+const copySorted = (arr) => {
+  return arr.slice().sort();
+}
+
+/*У вас есть массив объектов user, и у каждого из объектов есть name, surname и id.
+Напишите код, который создаст ещё один массив объектов с параметрами id и fullName, 
+где fullName – состоит из name и surname.*/
+
+const transformUsers = (users) => {
+  return users.map((user) => {
+    user.fullName = `${user.name} ${user.surname}`;
+    delete user.name;
+    delete user.surname;
+    return user;
+  });
+}
+
+/* Пусть arr – массив строк.
+Напишите функцию unique(arr), 
+которая возвращает массив, содержащий только уникальные элементы arr.*/
+
+const unique = (arr) => {
+  return Array.from(new Set(arr)).map((item) => item);
+}
