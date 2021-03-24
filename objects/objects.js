@@ -34,3 +34,35 @@ function Calculator(){
     return this.first * this.second;
   }
 }
+
+/* Напишите функцию aclean(arr), которая возвращает массив слов, очищенный от анаграмм.
+Например:
+let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+alert( aclean(arr) ); // "nap,teachers,ear" or "PAN,cheaters,era"
+Из каждой группы анаграмм должно остаться только одно слово, не важно какое. */
+
+const aclean = (arr) => {
+  let map = new Map();
+  for (let word of arr) {
+    let sorted = word
+      .toLowerCase()
+      .split('')
+      .sort()
+      .join('');
+    map.set(sorted, word);
+  }
+  return Array.from(map.values());
+}
+
+/*Есть объект salaries с произвольным количеством свойств, содержащих заработные платы.
+Напишите функцию sumSalaries(salaries), которая возвращает сумму всех зарплат 
+с помощью метода Object.values и цикла for..of.
+Если объект salaries пуст, то результат должен быть 0.*/
+
+const sumSalaries = (salaries) => {
+  let res = 0;
+  for (salary of Object.values(salaries)) {
+    res += salary;
+  }
+  return res;
+}
