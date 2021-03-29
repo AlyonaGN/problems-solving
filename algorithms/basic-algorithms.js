@@ -66,3 +66,24 @@ const printListCyclic = (list) => {
     list = list.next;
   }
 }
+
+/* Выведите односвязный список из предыдущего задания Вывод односвязного списка в обратном порядке.
+Сделайте два решения: с использованием цикла и через рекурсию.*/
+
+const printReversedListRecursive = (list) => {
+  if (list.next) {
+    printList(list.next)
+  }
+  console.log(list.value);
+}
+
+const printReversedListCyclic = (list) => {
+  let arr = [];
+  while (list) {
+    arr.push(list.value);
+    list = list.next;
+  }
+  for (let i = arr.length - 1; i >= 0; i--) {
+    console.log(arr[i]);
+  }
+}
