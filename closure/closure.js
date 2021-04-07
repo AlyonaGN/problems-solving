@@ -33,3 +33,16 @@ const inArray = (arr) => {
         return arr.includes(num);
     }
 }
+
+/* У нас есть массив объектов, который нужно отсортировать:
+let users = [
+  { name: "John", age: 20, surname: "Johnson" },
+  { name: "Pete", age: 18, surname: "Peterson" },
+  { name: "Ann", age: 19, surname: "Hathaway" }
+]; 
+Сортировка должна вызываться таким образом - 
+users.sort(byField('age') */
+
+const byField = (prop) => {
+    return (a,b) => a[prop] > b[prop] ? 1 : -1;
+}
