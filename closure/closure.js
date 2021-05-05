@@ -46,3 +46,18 @@ users.sort(byField('age') */
 const byField = (prop) => {
     return (a,b) => a[prop] > b[prop] ? 1 : -1;
 }
+
+/* Реализуйте функцию:
+multiply(5)(3)(5)(4)(4) */
+
+function multiply(num) {
+    let res = num;
+    function innerMulti(n){
+      res *= n;
+      return innerMulti;
+    }
+    innerMulti.toString = () => res;
+    return innerMulti;
+}
+  
+console.log(multiply(5)(3)(5)(4)(4));
