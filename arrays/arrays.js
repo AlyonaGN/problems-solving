@@ -119,3 +119,12 @@ const transformUsers = (users) => {
 const unique = (arr) => {
   return Array.from(new Set(arr)).map((item) => item);
 }
+
+/* Реализуйте функцию:
+flatten([1, [1, 2, [3, 4]], [2, 4]]);// [1, 1, 2, 3, 4, 2, 4]*/
+
+const flatten = (arr) => {
+  return arr.reduce((accum, curValue) => {
+    return accum.concat(Array.isArray(curValue) ? flatten(curValue) : curValue);
+  }, []);
+};
