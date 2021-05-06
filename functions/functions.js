@@ -44,3 +44,34 @@ const sum = (num) => {
   }
   return sumIt;
 }
+
+/* Напишите функцию printNumbers(from, to), которая выводит число каждую секунду, начиная от from и заканчивая to.
+Сделайте два варианта решения.
+Используя setInterval.
+Используя рекурсивный setTimeout. */
+
+const printNumbers = (from, to) => {
+  let i = from;
+ const idInterval = setInterval(function(){
+    console.log(i);
+    if (i > to) {
+      clearInterval(idInterval);
+    }
+    i++;
+  }, 1000);
+};
+
+const printNumbers = (from, to) => {
+  let i = from;
+  const inner = () => {
+    console.log(i);
+    if (i > to) {
+      return;
+    }
+    setTimeout(inner, 1000);
+    i++;
+  }
+  const timer = setTimeout(inner, 1000);
+}
+
+printNumbers(1, 5);
