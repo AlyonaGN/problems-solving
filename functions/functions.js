@@ -94,3 +94,29 @@ let f1500 = delay(toBeDecorated, 1500);
 
 f1000("test"); // показывает "test" после 5000 мс
 f1500("test1"); // показывает "test1" после 1500 мс
+
+/* Результатом декоратора debounce(f, ms) должна быть обёртка, которая передаёт вызов f не более одного раза в ms миллисекунд. 
+Другими словами, когда мы вызываем debounce, 
+это гарантирует, что все остальные вызовы будут игнорироваться в течение ms. */
+
+let f = debounce(console.log, 1000);
+
+function debounce(func, pause) {
+  let shouldPause = false;
+  return function inner(){
+    if (shouldPause) {
+      return;
+    }
+    func.apply(this, arguments);
+    shouldPause = true;
+    setTimeout(() => {
+      shouldPause = false
+    }, pause);
+  }
+}
+
+f(1); // выполняется немедленно
+f(2); // проигнорирован
+
+setTimeout( () => f(3), 100); // проигнорирован
+setTimeout( () => f(4), 1100); // выполняется
