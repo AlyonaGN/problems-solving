@@ -75,3 +75,22 @@ const printNumbers = (from, to) => {
 }
 
 printNumbers(1, 5);
+
+/* Создайте декоратор delay(f, ms), который задерживает каждый вызов f на ms миллисекунд. */
+
+function toBeDecorated(x) {
+  console.log(x);
+}
+
+function delay(func, delay) {
+  
+  return function f() {
+    setTimeout(() => func.apply(this, arguments), delay);
+  }
+}
+
+let f1000 = delay(toBeDecorated, 5000);
+let f1500 = delay(toBeDecorated, 1500);
+
+f1000("test"); // показывает "test" после 5000 мс
+f1500("test1"); // показывает "test1" после 1500 мс
